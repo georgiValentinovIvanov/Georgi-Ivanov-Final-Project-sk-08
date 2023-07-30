@@ -19,6 +19,8 @@ public class Register extends Base{
     WebElement confirmPasswordTextt;
     @FindBy(id="sign-in-button")
     WebElement submitBtn;
+    @FindBy(id="nav-link-profile")
+        WebElement profileVisibilityBtn;
     public Register(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
@@ -40,5 +42,8 @@ public class Register extends Base{
     }
     public void clickSubmitBtn(){
         clickElement(submitBtn);
+    }
+    public void verifyVisibilitiProfileBtn(){
+        waitForVisibility(profileVisibilityBtn);
     }
 }

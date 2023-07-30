@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -37,5 +38,9 @@ public class Header extends Base {
     }
     public void clickConfirmBtn() {
         clickElement(confirmBtn);
+    }
+
+    public void invisibleProfileButton(){
+        smallWait.until(ExpectedConditions.invisibilityOf(profileLink));
     }
 }
