@@ -25,8 +25,10 @@ public class TestCase04 extends BaseMethod{
         Login loginPage = new Login(driver);
         loginPage.verifyUrl();
         loginPage.login(username, password);
+        loginPage.verifyUrl();
 
         System.out.println("3. Go to profile page on all posts and get current posts count.");
+        headerPage.goToProfile();
         Profile profilePage = new Profile(driver);
         profilePage.goToAllPosts();
         profilePage.verifyUrl();

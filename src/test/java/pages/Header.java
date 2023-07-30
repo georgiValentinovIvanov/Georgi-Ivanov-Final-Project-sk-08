@@ -15,9 +15,9 @@ public class Header extends Base {
     WebElement profileLink;
     @FindBy(id = "nav-link-new-post")
     WebElement newPostLink;
-    @FindBy(linkText = "Delete post")
+    @FindBy(css = ".delete-ask")
     WebElement deleteBtn;
-    @FindBy(linkText = "Yes")
+    @FindBy(css = ".btn.btn-primary.btn-sm")
     WebElement confirmBtn;
     public Header(WebDriver driver) {
         super(driver);
