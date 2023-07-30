@@ -2,32 +2,30 @@ package tests;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pages.Header;
-import pages.Home;
-import pages.Login;
-import pages.Register;
+import pages.*;
 
-public class TestCase07 extends BaseMethod{
-    @DataProvider(name="getUsers")
-    public Object[][] getUsers(){
-        return new Object[][]{{"Joro.QA2","joroQA2@abv.bg","joroQA123","joroQA123"}};
+public class TestCase07 extends BaseMethod {
+    @DataProvider(name = "getUsers")
+    public Object[][] getUsers() {
+        return new Object[][]{{"Joro.QA4", "joroQA4@abv.bg", "joroQA123", "joroQA123"}};
     }
+
     @Test(dataProvider = "getUsers")
-    public void userРegistration(String username, String email , String password , String confirmPassword){
+    public void userРegistration(String username, String email, String password, String confirmPassword) {
         System.out.println("1. Open web site.");
-        Home homePage=new Home(driver);
+        Home homePage = new Home(driver);
         homePage.openSite();
 
         System.out.println("2. Click Login Btn.");
-        Header headerPage=new Header(driver);
+        Header headerPage = new Header(driver);
         headerPage.goToLogin();
 
         System.out.println("3.Go to Register Btn.");
-        Login loginPage=new Login(driver);
+        Login loginPage = new Login(driver);
         loginPage.RegisterBtn();
 
         System.out.println("4. Enter username with credit data.");
-        Register register=new Register(driver);
+        Register register = new Register(driver);
         register.enterUsername(username);
         System.out.println("5. Enter email with credit data.");
         register.enterEmail(email);
@@ -37,9 +35,16 @@ public class TestCase07 extends BaseMethod{
         register.enterVerifyPassword(confirmPassword);
         System.out.println("8. Click to submit Btn.");
         register.clickSubmitBtn();
+        homePage.verifyUrl();
 
         System.out.println("9.Go to home page.");
-        Home home=new Home(driver);
+        Home home = new Home(driver);
         home.openSite();
+        homePage.verifyUrl();
+        Header header = new Header(driver);
+        header.goToProfile();
+        home.verifyUrl();
+        Register register1=new Register(driver);
+        register1.verifyVisibilitiProfileBtn();
     }
 }
